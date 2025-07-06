@@ -1,3 +1,32 @@
-<p class="text-red-600">
-  Test the i-ui components in this demo application.
-</p>
+<main class="p-8 space-y-4 bg-background text-foreground min-h-screen">
+  <div class="bg-my-test-color p-4 text-white font-bold">
+    This is a test div with a custom Tailwind color.
+  </div>
+
+  <h1 class="text-2xl font-bold mb-4">i-ui Buttons Showcase</h1>
+
+  <div class="flex flex-wrap gap-4 items-center">
+    <i-button>Default Button</i-button>
+    <i-button variant="secondary">Secondary Button</i-button>
+    <i-button variant="destructive" class="rounded-full">Delete</i-button>
+    <i-button variant="outline" size="sm">Outline</i-button>
+    <i-button variant="ghost">Ghost</i-button>
+    <i-button variant="link">Link Button</i-button>
+    <i-button [disabled]="true">Disabled</i-button>
+
+    <!-- Icon left + text -->
+    <i-button icon="featherSettings">Settings</i-button>
+
+    <!-- Icon right + text -->
+    <i-button icon="featherSettings" iconPosition="right">Settings</i-button>
+
+    <!-- Icon only -->
+    <i-button icon="featherSettings" variant="icon" size="icon" aria-label="Settings"></i-button>
+
+    <!-- Loader Button -->
+    <i-button [loader]="true">Loading...</i-button>
+
+    <!-- Anchor Button with icon left -->
+    <i-button [anchor]="true" href="https://www.example.com" variant="anchor" icon="lucideSearch" target="_blank">Anchor Link</i-button>
+  </div>
+</main>

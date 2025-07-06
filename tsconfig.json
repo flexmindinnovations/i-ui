@@ -4,9 +4,11 @@
   "compileOnSave": false,
   "compilerOptions": {
     "strict": true,
+    "baseUrl": ".",
     "paths": {
+      "@/*": ["./*"],
       "i-ui": [
-        "./dist/i-ui"
+        "projects/i-ui/src/public-api.ts"
       ]
     },
     "noImplicitOverride": true,
