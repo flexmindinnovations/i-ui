@@ -4,6 +4,11 @@
   "compileOnSave": false,
   "compilerOptions": {
     "strict": true,
+    "paths": {
+      "i-ui": [
+        "./dist/i-ui"
+      ]
+    },
     "noImplicitOverride": true,
     "noPropertyAccessFromIndexSignature": true,
     "noImplicitReturns": true,
@@ -22,5 +27,19 @@
     "typeCheckHostBindings": true,
     "strictTemplates": true
   },
-  "files": []
+  "files": [],
+  "references": [
+    {
+      "path": "./projects/i-ui/tsconfig.lib.json"
+    },
+    {
+      "path": "./projects/i-ui/tsconfig.spec.json"
+    },
+    {
+      "path": "./projects/i-ui-demo/tsconfig.app.json"
+    },
+    {
+      "path": "./projects/i-ui-demo/tsconfig.spec.json"
+    }
+  ]
 }

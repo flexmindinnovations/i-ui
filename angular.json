@@ -3,5 +3,116 @@
   "version": 1,
   "newProjectRoot": "projects",
   "projects": {
+    "i-ui": {
+      "projectType": "library",
+      "root": "projects/i-ui",
+      "sourceRoot": "projects/i-ui/src",
+      "prefix": "i",
+      "architect": {
+        "build": {
+          "builder": "@angular/build:ng-packagr",
+          "configurations": {
+            "production": {
+              "tsConfig": "projects/i-ui/tsconfig.lib.prod.json"
+            },
+            "development": {
+              "tsConfig": "projects/i-ui/tsconfig.lib.json"
+            }
+          },
+          "defaultConfiguration": "production"
+        },
+        "test": {
+          "builder": "@angular/build:karma",
+          "options": {
+            "tsConfig": "projects/i-ui/tsconfig.spec.json"
+          }
+        }
+      }
+    },
+    "i-ui-demo": {
+      "projectType": "application",
+      "schematics": {},
+      "root": "projects/i-ui-demo",
+      "sourceRoot": "projects/i-ui-demo/src",
+      "prefix": "app",
+      "architect": {
+        "build": {
+          "builder": "@angular/build:application",
+          "options": {
+            "browser": "projects/i-ui-demo/src/main.ts",
+            "polyfills": [
+              "zone.js"
+            ],
+            "tsConfig": "projects/i-ui-demo/tsconfig.app.json",
+            "assets": [
+              {
+                "glob": "**/*",
+                "input": "projects/i-ui-demo/public"
+              }
+            ],
+            "styles": [
+              "projects/i-ui-demo/src/styles.css"
+            ]
+          },
+          "configurations": {
+            "production": {
+              "budgets": [
+                {
+                  "type": "initial",
+                  "maximumWarning": "500kB",
+                  "maximumError": "1MB"
+                },
+                {
+                  "type": "anyComponentStyle",
+                  "maximumWarning": "4kB",
+                  "maximumError": "8kB"
+                }
+              ],
+              "outputHashing": "all"
+            },
+            "development": {
+              "optimization": false,
+              "extractLicenses": false,
+              "sourceMap": true
+            }
+          },
+          "defaultConfiguration": "production"
+        },
+        "serve": {
+          "builder": "@angular/build:dev-server",
+          "configurations": {
+            "production": {
+              "buildTarget": "i-ui-demo:build:production"
+            },
+            "development": {
+              "buildTarget": "i-ui-demo:build:development"
+            }
+          },
+          "defaultConfiguration": "development"
+        },
+        "extract-i18n": {
+          "builder": "@angular/build:extract-i18n"
+        },
+        "test": {
+          "builder": "@angular/build:karma",
+          "options": {
+            "polyfills": [
+              "zone.js",
+              "zone.js/testing"
+            ],
+            "tsConfig": "projects/i-ui-demo/tsconfig.spec.json",
+            "assets": [
+              {
+                "glob": "**/*",
+                "input": "projects/i-ui-demo/public"
+              }
+            ],
+            "styles": [
+              "projects/i-ui-demo/src/styles.css"
+            ]
+          }
+        }
+      }
+    }
   }
 }
